@@ -1,8 +1,10 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const EmployeeCard = ({employee}) => {
-    
-  return (
+
+    return (
     <div className="employee__card">
                         <i className="fa-solid fa-circle-xmark employee__deleteBtn"></i>
                         <img className="employee__img" src={employee.picture.large} alt="Employee" width="100px" height="100px"/>
@@ -23,7 +25,7 @@ const EmployeeCard = ({employee}) => {
                                 <h3>roles</h3>
                             </div>
                         </div>
-                        <button className="employee__editBtn">Profile</button>
+                        <Link to={`/user/${employee.name.first}-${employee.name.last}`} ><button className="employee__editBtn">Profile</button></Link>
                     </div>
   )
 }

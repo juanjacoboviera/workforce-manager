@@ -3,6 +3,7 @@ import EmployeeCard from './EmployeeCard'
 import {useState, useEffect} from 'react'
 import Select from './Select';
 
+ 
 const Dashboard = () => {
     const [employees, setemployees] = useState([]);
     const [sortByAge, setSortByAge] = useState('oldest')
@@ -23,15 +24,15 @@ const Dashboard = () => {
     fetch(workForceUrl)
     .then(response => response.json())
     .then(data => setemployees(data.results))
-  },[])
+  },[sortByAge])
 
   return (
-    <>
+    <main className='container'>
     <Select setSortByAge={setSortByAge}/>
     <div className="card__grid">
     {employees.map((sortByDOB(employees), employee => <EmployeeCard employee={employee}/>))}
     </div>
-    </>
+    </main>
   )
 }
 
