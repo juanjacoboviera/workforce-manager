@@ -1,11 +1,29 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-const ProfilePage = () => {
+import {useState, useEffect} from 'react'
+const ProfilePage = ({employees}) => {
+      const [employee, setemployee] = useState()
       const {profileId} = useParams()
-      console.log(profileId)
+      
+      const findEmployee = (users) =>{
+        const firstWord = profileId.split("-")[0]
+        const user = users.filter(employee => {
+          return employee.name.first == firstWord
+        })
+        return user
+      }
+
+      useEffect(()=>{
+        const employee = findEmployee(employees)
+        setemployee(employee[0])
+      },[])
+
+     console.log(employee)
   
   return (
-    <div>ProfilePage</div>
+    <div>
+      {employee && <h1>{employee.name.first} {employee.name.last}</h1>}
+    </div>
   )
 }
 
