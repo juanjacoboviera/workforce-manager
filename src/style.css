@@ -268,3 +268,82 @@ h2{
 .employee__editBtn:hover{
   background-color: rgb(149, 140, 244);
 }
+
+/* ProfilePage Component Styles */
+
+.profile__banner{
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  height: 200px;
+  width: 80%;
+  margin: 15px 5px;
+  border-top-right-radius: 10px ;
+  border-top-left-radius: 10px ;
+  border: 1px solid lightgrey;
+}
+
+.profile__banner-background{
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: end;
+  width: 100%;
+  height: 60%;
+  border-top-right-radius: 10px ;
+  border-top-left-radius: 10px ;
+}
+
+.profile__banner-background img{
+  position: relative;
+  top: 50px;
+}
+
+.profile__banner-background img, h1, p {
+  margin: 10px;
+  color: white;
+}
+
+.bg-pan-left {
+	-webkit-animation: bg-pan-left 8s both;
+	        animation: bg-pan-left 8s both;
+}
+
+ @-webkit-keyframes bg-pan-left {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+@keyframes bg-pan-left {
+  0% {
+    background-color: #8991d9;
+    background-position: 100% 50%;
+  }
+  100% {
+    background-color: #b2acf4;
+    background-position: 0% 50%;
+  }
+} 
+
+.profile__banner__info{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.profile__banner__secondaryInfo{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.profile__banner__secondaryInfo p {
+  color: black;
+}
