@@ -31,8 +31,7 @@ const ProfilePage = ({employees}) => {
       <div className='profile__banner-background bg-pan-left'>
         {employee && <img className="employee__img" src={employee.picture.large} alt="Employee" width="100px" height="100px"/>}
         <div className='profile__banner__info'>
-        {employee && <h1>{employee.name.first} {employee.name.last}</h1>}
-        {employee && <p> Age: {employee.dob.age}</p>}
+        {employee && <h1>{employee.name.first} {employee.name.last}, {employee.dob.age}</h1>}
         </div>
       </div>
       <div className='profile__banner__secondaryInfo'>
@@ -42,11 +41,18 @@ const ProfilePage = ({employees}) => {
         {employee && <p>{employee.location.country}</p>}
         <FontAwesomeIcon icon={faEnvelope}/>
        {employee && <p> {employee.email} </p>}
-
-
       </div>
-
       </header>
+      <main className='profile__main'>
+        <div className='profile__container'>
+          <p>Employee Information</p>
+        </div>
+        <div className='profile__container'>
+          <p>Employee Tasks</p>
+        </div>
+
+
+      </main>
     </div>
   )
 }
