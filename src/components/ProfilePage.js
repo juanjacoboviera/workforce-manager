@@ -5,10 +5,13 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faLocationPin } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import Map from './map/Map'
 
 const ProfilePage = ({employees}) => {
       const [employee, setemployee] = useState()
       const {profileId} = useParams()
+      // const [latitude, setLatitude] = useState(undefined);
+      // const [longitude, setLontitude] = useState(undefined);
       
       const findEmployee = (users) =>{
         const firstWord = profileId.split("-")[1]
@@ -21,9 +24,15 @@ const ProfilePage = ({employees}) => {
       useEffect(()=>{
         const employee = findEmployee(employees)
         setemployee(employee[0])
+       
+
       },[])
 
      console.log(employee)
+
+    
+
+     
   
   return (
     <div className='container'>
@@ -45,7 +54,7 @@ const ProfilePage = ({employees}) => {
       </header>
       <main className='profile__main'>
         <div className='profile__container'>
-          <p>Employee Information</p>
+          {employee && <Map employee={employee}/>}
         </div>
         <div className='profile__container'>
           <p>Employee Tasks</p>
