@@ -10,8 +10,6 @@ import Map from './map/Map'
 const ProfilePage = ({employees}) => {
       const [employee, setemployee] = useState()
       const {profileId} = useParams()
-      // const [latitude, setLatitude] = useState(undefined);
-      // const [longitude, setLontitude] = useState(undefined);
       
       const findEmployee = (users) =>{
         const firstWord = profileId.split("-")[1]
@@ -30,10 +28,6 @@ const ProfilePage = ({employees}) => {
 
      console.log(employee)
 
-    
-
-     
-  
   return (
     <div className='container'>
       <header className='profile__banner'>
@@ -54,7 +48,14 @@ const ProfilePage = ({employees}) => {
       </header>
       <main className='profile__main'>
         <div className='profile__container'>
+        <div className='profile__map'>
           {employee && <Map employee={employee}/>}
+          <div id="gradient">
+          </div>
+          </div>
+          <div className='profile__info'>
+            {employee && <p>{employee.name.first} {employee.name.last}</p>}
+          </div>
         </div>
         <div className='profile__container'>
           <p>Employee Tasks</p>
