@@ -10,6 +10,7 @@ import Map from './map/Map'
 const ProfilePage = ({employees}) => {
       const [employee, setemployee] = useState()
       const {profileId} = useParams()
+      const date = new Date(employee?.dob.date).toLocaleDateString('en-US');
       
       const findEmployee = (users) =>{
         const firstWord = profileId.split("-")[1]
@@ -25,9 +26,7 @@ const ProfilePage = ({employees}) => {
        
 
       },[])
-
-     console.log(employee)
-
+      
   return (
     <div className='container'>
       <header className='profile__banner'>
@@ -54,7 +53,22 @@ const ProfilePage = ({employees}) => {
           </div>
           </div>
           <div className='profile__info'>
-            {employee && <p>{employee.name.first} {employee.name.last}</p>}
+            <div className='profile__info__container'>
+            <p>Gender:</p>
+            {employee && <p>{employee.gender.charAt(0).toUpperCase() + employee.gender.slice(1)}</p>}
+            </div>
+            <div className='profile__info__container'>
+            <p>Birthday:</p>
+            {employee && <p>{date}</p>}
+            </div>
+            <div className='profile__info__container'>
+            <p>Born in:</p>
+            {employee && <p> {employee.location.city}, {employee.location.country}</p>}
+            </div>
+            <div className='profile__info__container'>
+            <p>Address:</p>
+            {employee && <p>{employee.location.street.name}, {employee.location.street.number}</p>}
+            </div>
           </div>
         </div>
         <div className='profile__container'>

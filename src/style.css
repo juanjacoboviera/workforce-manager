@@ -364,7 +364,7 @@ h2{
 .profile__container{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   height: 300px;
   width: 100%;
   background-color: white;
@@ -375,10 +375,6 @@ h2{
   position:relative;
 }
 
-.profile__info p{
-  color: black;
-
-}
 
 #gradient {
   pointer-events: none;
@@ -394,4 +390,17 @@ h2{
   background: linear-gradient(to bottom,  rgba(255,255,255,0) 40%,rgba(255,255,255,1) 80%);
 
 
+}
+.profile__info p{
+  color: black;
+
+}
+
+.profile__info__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  border-bottom: 2.5px dotted rgb(245, 245, 245);
 }
