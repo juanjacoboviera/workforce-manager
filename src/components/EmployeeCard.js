@@ -1,9 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
-import { useParams } from 'react-router-dom'
 
 const EmployeeCard = ({employee}) => {
-
     return (
     <div className="employee__card">
                         <i className="fa-solid fa-circle-xmark employee__deleteBtn"></i>
@@ -17,11 +15,11 @@ const EmployeeCard = ({employee}) => {
                                 <h3>tasks</h3>
                             </div>
                             <div className="task">
-                                <p>20</p>
+                               <p>{employee.tasks.filter(task => task.completed).length}</p>
                                 <h3>completed</h3>
                             </div>
                             <div className="task">
-                                <p>2</p>
+                            <p>{employee.tasks.filter(task => !task.completed).length}</p>
                                 <h3>pending</h3>
                             </div>
                         </div>
