@@ -3,13 +3,23 @@ import {useState, useEffect} from 'react'
 import Dashboard from './components/Dashboard';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import ProfilePage from './components/ProfilePage';
-
+import { randomNumber, mergeEmployeesAndTasks, assignTasks } from './functions';
 
 function App() {
   const [employees, setemployees] = useState([]);
   const [sortByAge, setSortByAge] = useState('oldest');
   const seed ='e4d249cc94fc478b';
   const workForceUrl = `https://randomuser.me/api/?seed=${seed}&results=30`
+  // const [tasks, setTasks] = useState()
+
+  const fetchJson = () => {
+    fetch('./data.json')
+    .then(response => {
+      return response.json();
+    }).then(data => {
+      // setTasks[data.tasks];
+    })
+  }  
 
 const sortByDOB = (people) => {
     return people.sort((a, b) => {
@@ -24,10 +34,28 @@ const sortByDOB = (people) => {
 useEffect(()=>{
   fetch(workForceUrl)
   .then(response => response.json())
-  .then(data => setemployees(data.results))
+  .then(data => {
+    const employeesList = data.results;
+    fetch('./data.json')
+    .then(response => {
+      return response.json();
+    }).then(data => {
+      // setTasks[data.tasks];
+      const tasks = data.tasks
+      const employees = assignTasks(employeesList, tasks)
+      setemployees(employees)
+      
+      
+    })
+   
+    // setemployees(data.results)
+  })
 
-
+  
+  
 },[sortByAge])
+
+console.log(employees)
 
   return (
     <BrowserRouter>

@@ -13,16 +13,16 @@ const EmployeeCard = ({employee}) => {
                         <h3 id="employee__roll">Age: {employee.dob.age}</h3>
                         <div className="employee__taskContainer">
                             <div className="task">
-                                <p>9</p>
-                                <h3>work orders</h3>
-                            </div>
-                            <div className="task">
-                                <p>20</p>
+                                <p>{employee.tasks.length}</p>
                                 <h3>tasks</h3>
                             </div>
                             <div className="task">
+                                <p>20</p>
+                                <h3>completed</h3>
+                            </div>
+                            <div className="task">
                                 <p>2</p>
-                                <h3>roles</h3>
+                                <h3>pending</h3>
                             </div>
                         </div>
                         <Link to={`/user/${employee.name.first}-${employee.name.last}`} ><button className="employee__editBtn">Profile</button></Link>
