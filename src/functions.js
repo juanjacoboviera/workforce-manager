@@ -15,6 +15,4 @@ let result = [];
 return result;
     }  
     
-
-    
     export {assignTasks}

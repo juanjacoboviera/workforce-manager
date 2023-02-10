@@ -78,7 +78,7 @@ const ProfilePage = ({employees}) => {
           <h2>Employee Tasks</h2>
           </div>
           <div className='task__cardContainer'>
-          {employee && employee.tasks.map(task => <Task task={task}/>)}
+          {employee && employee.tasks.map(task => <Task  key={task.id} task={task}/>)}
           </div>
         </div>
       </main>
