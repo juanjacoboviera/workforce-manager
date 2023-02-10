@@ -1,16 +1,15 @@
 import React from 'react'
 import EmployeeCard from './EmployeeCard'
-import {useState, useEffect} from 'react'
 import Select from './Select';
 
  
-const Dashboard = ({employees, sortByDOB, setSortByAge}) => {
+const Dashboard = ({employees, sortByDOB, setSortByAge, sortByAge, handleReset}) => {
    
   return (
     <main className='container'>
-    <Select setSortByAge={setSortByAge}/>
+    <Select setSortByAge={setSortByAge} sortByAge={sortByAge}/>
     <div className="card__grid">
-    {employees.map((sortByDOB(employees), employee => <EmployeeCard key={employee.dob.date} employee={employee}/>))}
+    {employees.map((sortByDOB(employees), employee => <EmployeeCard key={employee.dob.date} employee={employee} handleReset={handleReset}/>))}
     </div>
     </main>
   )

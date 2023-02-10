@@ -68,7 +68,7 @@ const ProfilePage = ({employees}) => {
             </div>
             <div className='profile__info__container'>
             <h2>Address:</h2>
-            {employee && <p>{employee.location.street.number}, {employee.location.street.name}</p>}
+            {employee && <p>{employee.location.street.number} - {employee.location.street.name}</p>}
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
 
-const EmployeeCard = ({employee}) => {
+const EmployeeCard = ({employee, handleReset}) => {
     return (
     <div className="employee__card">
                         <i className="fa-solid fa-circle-xmark employee__deleteBtn"></i>
@@ -23,7 +23,7 @@ const EmployeeCard = ({employee}) => {
                                 <h3>pending</h3>
                             </div>
                         </div>
-                        <Link to={`/user/${employee.name.first}-${employee.name.last}`} ><button className="employee__editBtn">Profile</button></Link>
+                        <Link to={`/user/${employee.name.first}-${employee.name.last}`} ><button onClick={()=> handleReset()} className="employee__editBtn">Profile</button></Link>
                     </div>
   )
 }
