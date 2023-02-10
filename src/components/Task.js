@@ -27,7 +27,7 @@ const Task = ({task}) => {
         </div>
         <div className='task__secondaryInfo'>
         <div className='task__dueDate'>
-        <p>Due: {task.endDate ?  task.endDate : 'Pending date'}</p>
+        <p><span className='task__span'>Due:</span> {task.endDate ?  task.endDate : 'date has not been assigned'}</p>
         {task.urgent ?  <div className='task__urgent'>
        <small>Urgent</small>
         </div> : null }

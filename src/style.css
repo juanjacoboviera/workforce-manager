@@ -346,7 +346,8 @@ h2{
 }
 
 .profile__banner__secondaryInfo p {
-  color: black;
+  color:rgb(84, 84, 84);
+  margin: 0 20px;
 }
 
 .profile__main{
@@ -365,7 +366,7 @@ h2{
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  height: 300px;
+  height: 330px;
   width: 100%;
   background-color: white;
 
@@ -401,8 +402,17 @@ h2{
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 0 15px;
+  padding: 3px 15px;
   border-bottom: 2.5px dotted rgb(245, 245, 245);
+}
+
+.profile__info__container h2, p{
+  font-size: 0.9rem;
+}
+
+.profile__info__container p{
+  color:rgb(84, 84, 84);
+  font-weight: 400;
 }
 
 .task__cardContainer{
@@ -425,7 +435,7 @@ h2{
 }
 
 .task__card{
-  border-bottom: 1px solid rgb(234, 234, 234);
+  border-bottom: 1px solid rgb(242, 242, 242);
   width: 100%;
   height: 80px;
   padding: 10px;
@@ -475,6 +485,10 @@ h2{
   display: flex;
   flex-direction: row; 
   align-items: center; 
+}
+
+.task__span{
+  font-weight: 600;
 }
 
 .task__urgent{

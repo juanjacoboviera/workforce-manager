@@ -2,8 +2,8 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faPhone } from "@fortawesome/free-solid-svg-icons"
-import { faLocationPin } from "@fortawesome/free-solid-svg-icons"
+import { faPhoneSquare } from "@fortawesome/free-solid-svg-icons"
+import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faTasks } from "@fortawesome/free-solid-svg-icons"
 import Map from './map/Map'
@@ -38,12 +38,12 @@ const ProfilePage = ({employees}) => {
         </div>
       </div>
       <div className='profile__banner__secondaryInfo'>
-        <FontAwesomeIcon icon={faPhone}/>
+        <FontAwesomeIcon icon={faPhoneSquare}  style={{color: '#5c618d'}}/>
         {employee && <p> {employee.cell}</p>}
-        <FontAwesomeIcon icon={faLocationPin}/>
+        <FontAwesomeIcon icon={faMapLocationDot} style={{color: '#5c618d'}}/>
         {employee && <p>{employee.location.country}</p>}
-        <FontAwesomeIcon icon={faEnvelope}/>
-       {employee && <p> {employee.email} </p>}
+        <FontAwesomeIcon icon={faEnvelope} style={{color: '#5c618d'}}/>
+       {employee && <p> {employee.email}</p>}
       </div>
       </header>
       <main className='profile__main'>
@@ -55,20 +55,20 @@ const ProfilePage = ({employees}) => {
           </div>
           <div className='profile__info'>
             <div className='profile__info__container'>
-            <p>Gender:</p>
+            <h2>Gender:</h2>
             {employee && <p>{employee.gender.charAt(0).toUpperCase() + employee.gender.slice(1)}</p>}
             </div>
             <div className='profile__info__container'>
-            <p>Birthday:</p>
+            <h2>Birthday:</h2>
             {employee && <p>{new Date(employee?.dob.date).toLocaleDateString('en-US')}</p>}
             </div>
             <div className='profile__info__container'>
-            <p>Born in:</p>
+            <h2>Born in:</h2>
             {employee && <p> {employee.location.city}, {employee.location.country}</p>}
             </div>
             <div className='profile__info__container'>
-            <p>Address:</p>
-            {employee && <p>{employee.location.street.name}, {employee.location.street.number}</p>}
+            <h2>Address:</h2>
+            {employee && <p>{employee.location.street.number}, {employee.location.street.name}</p>}
             </div>
           </div>
         </div>
