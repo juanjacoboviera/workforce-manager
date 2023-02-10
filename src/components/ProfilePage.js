@@ -5,12 +5,13 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faPhone } from "@fortawesome/free-solid-svg-icons"
 import { faLocationPin } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faTasks } from "@fortawesome/free-solid-svg-icons"
 import Map from './map/Map'
+import Task from './Task'
 
 const ProfilePage = ({employees}) => {
-      const [employee, setemployee] = useState()
-      const {profileId} = useParams()
-      const date = new Date(employee?.dob.date).toLocaleDateString('en-US');
+      const [employee, setemployee] = useState();
+      const {profileId} = useParams();
       
       const findEmployee = (users) =>{
         const firstWord = profileId.split("-")[1]
@@ -59,7 +60,7 @@ const ProfilePage = ({employees}) => {
             </div>
             <div className='profile__info__container'>
             <p>Birthday:</p>
-            {employee && <p>{date}</p>}
+            {employee && <p>{new Date(employee?.dob.date).toLocaleDateString('en-US')}</p>}
             </div>
             <div className='profile__info__container'>
             <p>Born in:</p>
@@ -72,10 +73,12 @@ const ProfilePage = ({employees}) => {
           </div>
         </div>
         <div className='profile__container'>
-          <p>Employee Tasks</p>
+          <div className='task__sectionTitle'>
+           <FontAwesomeIcon icon={faTasks} style={{color: 'white'}}/>
+          <h2>Employee Tasks</h2>
+          </div>
+          <Task/>
         </div>
-
-
       </main>
     </div>
   )
