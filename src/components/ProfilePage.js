@@ -77,7 +77,9 @@ const ProfilePage = ({employees}) => {
            <FontAwesomeIcon icon={faTasks} style={{color: 'white'}}/>
           <h2>Employee Tasks</h2>
           </div>
-          <Task/>
+          <div className='task__cardContainer'>
+          {employee && employee.tasks.map(task => <Task task={task}/>)}
+          </div>
         </div>
       </main>
     </div>

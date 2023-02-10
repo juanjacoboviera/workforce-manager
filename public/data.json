@@ -2,192 +2,214 @@
 "tasks": [
     {
       "id": 1,
-      "title": "Task 1",
+      "title": "Design Wireframes",
       "description": "This is the first task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": "2023-12-08",
-      "personId": 1
+      "personId": 1,
+      "urgent": true
     },
     {
       "id": 2,
-      "title": "Task 2",
+      "title": "Check cross browser compatibility on Sigma project",
       "description": "This is the second task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-05",
-      "personId": 2
+      "personId": 2,
+      "urgent": false
+      
     },
     {
       "id": 3,
-      "title": "Task 3",
+      "title": "Write creative brief",
       "description": "This is the third task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 3
+      "personId": 3,
+      "urgent": true
     },
     {
       "id": 4,
-      "title": "Task 4",
+      "title": "Write content for 'About us' section",
       "description": "This is the fourth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-06",
-      "personId": 4
+      "personId": 4,
+      "urgent": false
     },
     {
       "id": 5,
-      "title": "Task 5",
+      "title": "Research design trends for hotel industry",
       "description": "This is the fifth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 5
+      "personId": 5,
+      "urgent": true
     },
     {
       "id": 6,
-      "title": "Task 6",
+      "title": "Schedule 'all hands' meeting",
       "description": "This is the sixth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-07",
-      "personId": 6
+      "personId": 6,
+      "urgent": false
     },
     {
       "id": 7,
-      "title": "Task 7",
+      "title": "Upload sprint backlog",
       "description": "This is the seventh task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 7
+      "personId": 7,
+      "urgent": true
     },
     {
       "id": 8,
-      "title": "Task 8",
+      "title": "Review 'user-stories' sent by John",
       "description": "This is the eighth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-08",
-      "personId": 8
+      "personId": 8,
+      "urgent": false
     },
     {
       "id": 9,
-      "title": "Task 9",
+      "title": "Send key visual to client",
       "description": "This is the nineth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-08",
-      "personId": 10
+      "personId": 10,
+      "urgent": true
     },
     {
       "id": 10,
-      "title": "Task 10",
+      "title": "Fill out time sheet form",
       "description": "This is the tenth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": "2023-12-08",
-      "personId": 1
+      "personId": 1,
+      "urgent": false
     },
     {
       "id": 11,
-      "title": "Task 11",
+      "title": "Create user journey and interaction flows",
       "description": "This is the eleventh task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 1
+      "personId": 1,
+      "urgent": true
     },
     {
       "id": 12,
-      "title": "Task 12",
+      "title": "Publish blog post",
       "description": "This is the twelfth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": "2023-12-05",
-      "personId": 2
+      "personId": 2,
+      "urgent": false 
     },
     {
       "id": 13,
-      "title": "Task 13",
+      "title": "Meet with web dev team to discuss spec",
       "description": "This is the thirteenth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 3
+      "personId": 3,
+      "urgent": true
     },
     {
       "id": 14,
-      "title": "Task 14",
+      "title": "Sketch some ideas on paper",
       "description": "This is the fourteenth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-06",
-      "personId": 4
+      "personId": 4,
+      "urgent": false
     },
     {
       "id": 15,
-      "title": "Task 15",
+      "title": "Check client analytics",
       "description": "This is the fifteenth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 5
+      "personId": 5,
+      "urgent": true
     },
     {
       "id": 16,
-      "title": "Task 16",
+      "title": "Write first draft of brand review",
       "description": "This is the sixteenth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
-      "personId": 6
+      "personId": 6,
+      "urgent": false
     },
     {
       "id": 17,
-      "title": "Task 17",
+      "title": "Finalize event budget",
       "description": "This is the seventeenth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-05",
-      "personId": 7
+      "personId": 7,
+      "urgent": true
     },
     {
       "id": 18,
-      "title": "My Task 18",
+      "title": "404 redirects in place",
       "description": "This is the eighteenth task on the list.",
       "completed": false,
       "startDate": "2023-12-06",
       "endDate": null,
-      "personId": 8
+      "personId": 8,
+      "urgent": false
     },
     {
       "id": 19,
-      "title": "Task 19",
+      "title": "Sharing icons updated and working",
       "description": "This is the nineteenth task on the list.",
       "completed": true,
       "startDate": "2023-12-04",
       "endDate": "2023-12-06",
-      "personId": 9
+      "personId": 9,
+      "urgent": true
     },
     {
-      "title": "Task 20",
+      "title": "Read fonts and image licensing policies",
       "description": "This is the twentieth task on the list.",
       "completed": false,
       "startDate": "2023-12-04",
       "endDate": null,
       "personId": 10,
-      "id": 20
+      "id": 20,
+      "urgent": false
     },
     {
-      "title": "New Task",
+      "title": "Schedule brand review presentation with client",
       "description": "I have to do the new task",
       "completed": false,
       "startDate": "2023-12-07",
       "endDate": "2023-12-08",
       "personId": "12",
-      "id": 21
+      "id": 21,
+      "urgent": true
     }
   ]
 }
