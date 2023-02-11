@@ -15,4 +15,11 @@ let result = [];
 return result;
     }  
     
-    export {assignTasks}
+ const getSessionStorageData = () =>{
+        const sessionStorageData = sessionStorage.getItem("employeesList");
+        return JSON.parse(sessionStorageData);
+    }
+
+
+    export {assignTasks, getSessionStorageData}
+

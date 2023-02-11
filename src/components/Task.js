@@ -5,17 +5,25 @@ import { faPencil } from "@fortawesome/free-solid-svg-icons"
 import { useState, useEffect } from 'react';
 
 
-const Task = ({task}) => {
+const Task = ({task, setUpdateTask, setClicked}) => {
   const [isChecked, setIsChecked] = useState(task.completed);
+  
 
   useEffect(()=>{
-    console.log(isChecked)
+  
   }, [isChecked])
   
   const handleChange = () => {
+    setClicked(true)
     setIsChecked(!isChecked);
+    const taskUpdate = {...task}
+    setUpdateTask({
+      ...taskUpdate,
+      completed: !isChecked
+    })
   };
-  console.log(isChecked)
+    
+  
   return (
     <div className='task__card'>
         <div className='task__primaryInfo'>
