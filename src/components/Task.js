@@ -1,7 +1,7 @@
 import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
-import { faPencil } from "@fortawesome/free-solid-svg-icons"
+import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import { useState, useEffect } from 'react';
 
 
@@ -40,7 +40,7 @@ const Task = ({task, setUpdateTask, setClicked}) => {
        <small>Urgent</small>
         </div> : null }
         </div>
-        <button className='task__Editbtn'> <FontAwesomeIcon icon={faPencil} style={{color: '#b2acf4'}}/></button>
+        <button className='allpurpose__btn'> <FontAwesomeIcon icon={faEdit} style={{color: '#c3bef0'}}/></button>
         </div>
     </div>
   )

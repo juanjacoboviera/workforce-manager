@@ -76,6 +76,7 @@ useEffect(() => {
         {employee && <img className="employee__img" src={employee.picture.large} alt="Employee" width="100px" height="100px"/>}
         <div className='profile__banner__info'>
         {employee && <h1>{employee.name.first} {employee.name.last}, {employee.dob.age}</h1>}
+        <button className='allpurpose__btn allpurpose__btn--editProfile'>Edit Profile</button>
         </div>
       </div>
       <div className='profile__banner__secondaryInfo'>
