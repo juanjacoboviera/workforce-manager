@@ -60,7 +60,8 @@ useEffect(() => {
   setEmployee(employee[0]);
 
   if (clicked) {
-    const newEmployeeList = handleUpdateTask(updateTask, employee, employeeList)
+    const employeesSessionStorageList = getSessionStorageData()
+    const newEmployeeList = handleUpdateTask(updateTask, employee, employeesSessionStorageList)
     setEmployeeList(newEmployeeList)
     sessionStorage.setItem("employeesList", JSON.stringify(newEmployeeList));
 
