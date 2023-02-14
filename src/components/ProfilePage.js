@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import {useState, useEffect, useContext} from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import { faMartiniGlassCitrus, faPhoneSquare } from "@fortawesome/free-solid-svg-icons"
+import { faPhoneSquare } from "@fortawesome/free-solid-svg-icons"
 import { faMapLocationDot } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faTasks } from "@fortawesome/free-solid-svg-icons"
@@ -10,6 +10,7 @@ import Map from './map/Map'
 import Task from './Task'
 import { getSessionStorageData } from '../functions'
 import employeeContext from '../storage/EmployeeContext'
+import { Link } from 'react-router-dom'
 
 const ProfilePage = () => {
       const [employee, setEmployee] = useState();
@@ -76,7 +77,7 @@ useEffect(() => {
         {employee && <img className="employee__img" src={employee.picture.large} alt="Employee" width="100px" height="100px"/>}
         <div className='profile__banner__info'>
         {employee && <h1>{employee.name.first} {employee.name.last}, {employee.dob.age}</h1>}
-        <button className='allpurpose__btn allpurpose__btn--editProfile'>Edit Profile</button>
+        {employee && <Link to={`/user/${employee.name.first}-${employee.name.last}/edit`}><button className='allpurpose__btn allpurpose__btn--editProfile'>Edit Profile</button></Link>}
         </div>
       </div>
       <div className='profile__banner__secondaryInfo'>
