@@ -10,7 +10,6 @@ const Dashboard = () => {
   const workForceUrl = `https://randomuser.me/api/?seed=${seed}&results=30`
   const context = useContext(employeeContext);
   const {employeeList, setEmployeeList} = context.value
-  // setEmployeeList(employees)
 
 const sortByDOB = (people) => {
     return people.sort((a, b) => {

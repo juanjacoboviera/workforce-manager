@@ -18,6 +18,16 @@ body{
   width: 100vw;
  
 }
+
+input{
+  height: 40px;
+  border: 1px solid rgb(189, 189, 189);
+  border-radius: 5px;
+  margin-top: 10px;
+  padding-left: 10px;
+ 
+}
+
 #tooltip {
   width: max-content;
   position: absolute;
@@ -515,6 +525,7 @@ input[type=checkbox].toggle-switch {
     cursor: pointer;
     transition: background-color 0.09s ease-in-out;
     position: relative;
+    border: none;
 }
 
 input[type=checkbox].toggle-switch:checked {
@@ -542,8 +553,9 @@ input[type=checkbox].toggle-switch:checked::after {
 /* Profile Edit Page styles */
 
 .editPage__container{
-  display: grid;
-  grid-template-columns: 1fr 3fr;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 90vw;
   height: auto;
   grid-gap: 20px;
@@ -553,66 +565,112 @@ input[type=checkbox].toggle-switch:checked::after {
 
 }
 
-.leftCol__container{
-  height: 40%;
-  width: 100%;
-  background-color: white;
-  overflow: auto; 
-  grid-column: 1;
-}
-
-.rightCol__container{
-  
+.editPage__box{
+  border-radius: 5px;
   height: auto;
   background-color: white;
-  padding: 20px;
   grid-column: 2;
+  border: 1px solid rgb(209, 209, 209);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   
 }
 
-.rightCol__grid{
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  width: 100%;
-  height: 90%;
-  padding: 20px;
-  align-content: center;
-  justify-items: center;
+.editPage__header{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  border-bottom: 1px solid  rgb(209, 209, 209);
+  padding: 0 15px;
+  background-color: #b2acf4;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 
-.form__container{
+.navigate__container{
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 
-form div{
-  margin: 10px;
+.navigate__container h2 {
+  color: white;
+  margin: 0 0 0 20px;
 }
 
-form input {
-  display: block;
-  margin: 10px 10px 10px 0;
-  height: 30px;
-  width: 300px;  
-  padding: 3px 3px 3px 10px; 
-  border: none;
-  border-bottom: 1px solid rgb(234, 234, 234);;
+.btn__container button{
+  margin: 0;
+ width: 100px;
+}
+
+.editPage__content{
+  display: grid;
+  grid-template-columns:2fr 1fr;
+}
+
+.editPage__container p{
+color: rgb(189, 189, 189);
+font-size: 0.8rem;
+font-weight: 300;
+margin: 10px 0;
+}
+
+.main__content{
+  /* display: flex;
+  flex-direction: column;
+  justify-content: space-between; */
+  height: 100%;
+  width: 100%;
+  padding: 30px;
+}
+
+.form__tittle{
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: rgb(64, 64, 64);
+}
+
+.block__container{
+  margin: 10px 0;
+}
+
+.email__container{
+  width: 100%;
+}
+
+.email__container input{
+  width: 100%;
+}
+
+.inputsX2__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.inputsX2__container input{
+  width: calc(50% - 10px);
+}
+
+.inputsX3__container input{
+  width: calc(33% - 10px);
+}
+
+.inputsX3__container{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#streetName{
+  width: 100%;
 }
 
 label{
   font-weight: 700;
   font-size: 0.8rem;
-  color: #5c618d;
-}
-
-
-select{
-  width: 310px;
-  height: 40px;
-  padding: 3px;
-  margin: 10px;
-  border-radius: 2px;
+  color: rgb(64, 64, 64);
 }
 
 button{
@@ -627,6 +685,28 @@ background-color: #b2acf4;
   margin-top: 20px;
 }
 
-textarea:focus, input:focus{
+/* textarea:focus, input:focus{
   outline: none;
+} */
+
+
+.img__container{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ align-items: center;
+ width: 100%;
+ height: auto;
+}
+
+#imgUrl{
+  width: 100%;
+}
+
+.gender__radios input{
+margin: 10px 10px 0 10px;
+}
+
+.radio{
+  height: 10px;
 }
