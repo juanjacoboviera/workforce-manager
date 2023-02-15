@@ -8,56 +8,21 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { faTasks } from "@fortawesome/free-solid-svg-icons"
 import Map from './map/Map'
 import Task from './Task'
-import { getSessionStorageData } from '../functions'
+import { getSessionStorageData, findEmployee, handleUpdateTask } from '../functions'
 import employeeContext from '../storage/EmployeeContext'
 import { Link } from 'react-router-dom'
 
 const ProfilePage = () => {
-      const [employee, setEmployee] = useState();
+      const [employee, setEmployee] = useState(undefined);
       const {profileId} = useParams();
       const [updateTask, setUpdateTask] = useState({})
       const [clicked, setClicked] = useState(false)
       const context = useContext(employeeContext);
       const {employeeList, setEmployeeList} = context.value
-     
-      
-      const findEmployee = (users) =>{
-        const firstWord = profileId.split("-")[1]
-        const user = users.filter(employee => {
-          return employee.name.last == firstWord
-        })
-        return user
-      }
-
-
-const handleUpdateTask = (updateTask, match, array) => {
-  const newEmployeesList = array.map((employee) => {
-    if (employee.email !== match[0].email) {
-      return employee;
-    }
-    const newTasks = employee.tasks.map((task) => {
-      if (task.id !== updateTask.id) {
-        return task;
-      }
-
-      return {
-        ...task,
-        completed: updateTask.completed,
-      };
-    });
-
-    return {
-      ...employee,
-      tasks: newTasks,
-    };
-  });
-   return newEmployeesList;
-
-};
 
 useEffect(() => {
   const newEmployeeList = getSessionStorageData()
-  const employee = findEmployee(newEmployeeList);
+  const employee = findEmployee(newEmployeeList, profileId);
   setEmployee(employee[0]);
 
   if (clicked) {

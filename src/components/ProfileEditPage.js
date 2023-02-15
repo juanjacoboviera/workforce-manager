@@ -1,20 +1,39 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
+import { useParams } from 'react-router-dom'
+import { useContext } from 'react';
+import { findEmployee, getSessionStorageData } from '../functions';
+import employeeContext from '../storage/EmployeeContext'
 
 const ProfileEditPage = () => {
+    const context = useContext(employeeContext);
+    const {employeeList, setEmployeeList} = context.value
+    const {profileId} = useParams();
+    const [employee, setEmployee] = useState(undefined);
+
+useEffect(()=>{
+    const newEmployeeList = getSessionStorageData()
+    const employee = findEmployee(newEmployeeList, profileId);
+    setEmployee(employee[0]);
+    setEmployeeList(newEmployeeList)
+}, [])
+
+    console.log(employeeList)
+    console.log(employee)
+
   return (
     <div className='editPage__container'>
         <div className='leftCol__container'>
             <div className='img__container'>
-                <img src="" alt="" />
+               {employee &&  <img src={employee.picture.large} alt="" />}
             </div>
             <div className='text__container'>
-                <h2>Juan's <br />Profile page</h2>
+                {employee && <h2>{employee.name.first}'s <br />Profile page</h2>}
             </div>
         </div>
         <div className='rightCol__container'>
+            <div className="form__container">
             <h2>Profile Information</h2>
-            <div className="rightCol__grid">
-                <form action="submit">
+                <form id='editProfile' className='rightCol__grid' action="submit">
                     <div>
                         <label htmlFor="firstName">First name</label>
                         <input id='firstName' type="text" />
@@ -63,10 +82,9 @@ const ProfileEditPage = () => {
                         <label htmlFor="longitude">Longitude</label>
                         <input id='longitude' type="number" />
                     </div>
-                    <button type='submit'>Update</button>
                 </form>
+                    <button form='editProfile' type='submit'>Update</button>
             </div>
-            
         </div>
 
     </div>

@@ -79,50 +79,14 @@ body{
      margin: 20px 0;
   }
   
-  form {
+  /* form {
       display: flex;
       flex-direction:column;
       justify-content: center;
       align-items: center;
       height: 400px;
-  }
+  } */
   
-  form input {
-      display: block;
-      margin: 10px 10px 10px 0;
-      height: 30px;
-      width: 300px;  
-      padding: 3px 3px 3px 10px; 
-      border: 1px solid #a6acb0;
-      border-radius: 5px;
-  }
-
-  label{
-      font-weight: 600;
-      font-size: 0.9rem;
-      color: #5c618d;
-  }
-  
-  
-  select{
-      width: 310px;
-      height: 40px;
-      padding: 3px;
-      margin: 10px;
-      border-radius: 2px;
-  }
-  
-  button{
-      
-  background-color: #b2acf4;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      width: 200px;
-      height: 30px;
-      cursor: pointer;
-      margin-top: 20px;
-  }
   
   .removeMargin{
   margin: 0 10px 0 0;
@@ -573,4 +537,96 @@ input[type=checkbox].toggle-switch::after {
 
 input[type=checkbox].toggle-switch:checked::after {
     left: 1rem;
+}
+
+/* Profile Edit Page styles */
+
+.editPage__container{
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  width: 90vw;
+  height: auto;
+  grid-gap: 20px;
+  margin: 50px;
+  /* align-content: center;
+  justify-content: center; */
+
+}
+
+.leftCol__container{
+  height: 40%;
+  width: 100%;
+  background-color: white;
+  overflow: auto; 
+  grid-column: 1;
+}
+
+.rightCol__container{
+  
+  height: auto;
+  background-color: white;
+  padding: 20px;
+  grid-column: 2;
+  
+}
+
+.rightCol__grid{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  height: 90%;
+  padding: 20px;
+  align-content: center;
+  justify-items: center;
+}
+
+.form__container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form div{
+  margin: 10px;
+}
+
+form input {
+  display: block;
+  margin: 10px 10px 10px 0;
+  height: 30px;
+  width: 300px;  
+  padding: 3px 3px 3px 10px; 
+  border: none;
+  border-bottom: 1px solid rgb(234, 234, 234);;
+}
+
+label{
+  font-weight: 700;
+  font-size: 0.8rem;
+  color: #5c618d;
+}
+
+
+select{
+  width: 310px;
+  height: 40px;
+  padding: 3px;
+  margin: 10px;
+  border-radius: 2px;
+}
+
+button{
+  
+background-color: #b2acf4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 200px;
+  height: 30px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+textarea:focus, input:focus{
+  outline: none;
 }
