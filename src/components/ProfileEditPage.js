@@ -39,17 +39,23 @@ useEffect(()=>{
                 <div className="main__content">
                 <h2>User Information</h2>
                 <p>Enter the required information below to edit the user. You can change it anytime you want.</p>
-                <div className='email__container block__container'>
-                    <label htmlFor="email">E-mail address</label>
-                    <input id='email' type="email" placeholder='username@domain.com' />
+                <div className="names__container block__container">
+                    <div className="namesTittle__container">
+                        <h2 className='form__tittle'>Basic info</h2>
+                    </div>
+                    <div className='inputsX3__container'>
+                            <input id='firstName' type="text" placeholder='First name' />
+                            <input id='lastName' type="text" placeholder='Last name' />
+                            <input id='dob' type="date" placeholder='DOB' />
+                        </div>
                 </div>
                 <div className="names__container block__container">
                     <div className="namesTittle__container">
-                        <h2 className='form__tittle'>Full name</h2>
+                        <h2 className='form__tittle'>Contact</h2>
                     </div>
                     <div className='inputsX2__container'>
-                            <input id='firstName' type="text" placeholder='First name' />
-                            <input id='lastName' type="text" placeholder='Last name' />
+                            <input id='phoneNumber' type="number" placeholder='Cell number' />
+                            <input id='email' type="text" placeholder='E-mail' />
                         </div>
                 </div>
                 <div className="address__container block__container">
