@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import { useParams } from 'react-router-dom'
 import { useContext } from 'react';
-import { findEmployee, getSessionStorageData } from '../functions';
+import { findEmployee, getSessionStorageData, calculateAge } from '../functions';
 import employeeContext from '../storage/EmployeeContext'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons"
@@ -16,6 +16,7 @@ const ProfileEditPage = () => {
             firstName: '',
             lastName:  '.',
             dob: undefined,
+            age: undefined,
             cell: undefined, 
             email: '',
             imgUrl: '',
@@ -27,9 +28,7 @@ const ProfileEditPage = () => {
             latitude: 0,
             longitude: 0,
         
-        })
-
-   
+        })  
  
 useEffect(()=>{
     const newEmployeeList = getSessionStorageData()
@@ -37,18 +36,19 @@ useEffect(()=>{
     setEmployee(employee[0]);
     setEmployeeList(newEmployeeList)
     setFormData({
-        firstName: employee[0].name.first,
-        lastName:  employee[0].name.last,
-        dob: new Date(employee[0].dob.date),
+        firstName: employee[0].firstName,
+        lastName:  employee[0].lastName,
+        dob: new Date(employee[0].dob),
+        age: calculateAge(new Date(employee[0].dob.date)),
         cell: employee[0].cell,
         email: employee[0].email,
-        imgUrl: employee[0].picture.large,
-        country: employee[0].location.country,
-        city: employee[0].location.city,
-        streetNumber: employee[0].location.street.number,
-        streetName: employee[0].location.street.name,
-        latitude:  employee[0].location.coordinates.latitude,
-        longitude:  employee[0].location.coordinates.longitude,
+        imgUrl: employee[0].imgUrl,
+        country: employee[0].country,
+        city: employee[0].city,
+        streetNumber: employee[0].streetNumber,
+        streetName: employee[0].streetName,
+        latitude:  employee[0].latitude,
+        longitude:  employee[0].longitude,
         gender: employee[0].gender
     
     })
@@ -56,6 +56,23 @@ useEffect(()=>{
 
 }, [])
 
+const updateEmployeeData = (array, match, formData) =>{
+  const newListOfEmployees = array.map(employee =>{
+    if (employee.email !== match.email){
+      return employee
+    }
+    return{
+      cell: formData.cell,
+      dob: {date: formData.dob, age: formData.age},
+      location: {}
+    }
+
+  })
+}
+
+const saveChanges = () =>{
+
+}
 
 function handleFormChange(evt) {
     const value = evt.target.value;
@@ -79,7 +96,7 @@ console.log(formData)
                 <button className='allpurpose__btn allpurpose__btn--editProfile' form='editProfile' type='submit'>Save changes</button>
             </div>
             </div>
-               <Form employee={employee} formData={formData} handleFormChange={handleFormChange}/>
+               <Form formData={formData} handleFormChange={handleFormChange}/>
         </div>
     </div>
   )

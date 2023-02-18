@@ -13,8 +13,8 @@ const Dashboard = () => {
 
 const sortByDOB = (people) => {
     return people.sort((a, b) => {
-      const dateA = new Date(a.dob.date);
-      const dateB = new Date(b.dob.date);
+      const dateA = new Date(a.dob);
+      const dateB = new Date(b.dob);
       if(sortByAge === 'oldest')return dateA - dateB;
       if (sortByAge === 'youngest')return dateB - dateA;
       
@@ -30,7 +30,31 @@ useEffect(()=>{
     fetch(workForceUrl)
     .then(response => response.json())
     .then(data => {
-      const employeesList = data.results;
+      // const employeesList = data.results;
+      const rawEmployeesList = data.results;
+      const employeesList = rawEmployeesList.map(employee =>{
+        const employeesArray = []
+        const newEmployee =  {
+          firstName: employee.name.first,
+          lastName:  employee.name.last,
+          dob: employee.dob.date,
+          age:  employee.dob.age,
+          cell: employee.cell, 
+          email: employee.email,
+          imgUrl: employee.picture.large,
+          country: employee.location.country,
+          city: employee.location.city,
+          streetNumber: employee.location.street.number,
+          streetName: employee.location.street.name,
+          gender: employee.gender,
+          latitude: employee.location.coordinates.latitude,
+          longitude: employee.location.coordinates.longitude,
+
+        }
+        employeesArray.push(newEmployee)
+        return employeesArray
+      })
+      console.log(employeesList)
       fetch('./data.json')
       .then(response => response.json())
       .then(data => {
@@ -52,7 +76,7 @@ useEffect(()=>{
     <main className='container'>
     <Select setSortByAge={setSortByAge} sortByAge={sortByAge}/>
     <div className="card__grid">
-    {employeeList.map((sortByDOB(employeeList), employee => <EmployeeCard key={employee.dob.date} employee={employee} handleReset={handleReset}/>))}
+    {employeeList.map((sortByDOB(employeeList), employee => <EmployeeCard key={employee.dob} employee={employee} handleReset={handleReset}/>))}
     </div>
     </main>
   )

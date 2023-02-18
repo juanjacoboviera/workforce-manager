@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Form = ({employee, formData, handleFormChange}) => {
+const Form = ({formData, handleFormChange}) => {
 console.log(formData.latitude)
   return (
     <form id='editProfile' className='editPage__content' action="submit">

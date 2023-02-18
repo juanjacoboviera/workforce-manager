@@ -24,7 +24,7 @@ return result;
     const findEmployee = (users, param) =>{
         const firstWord = param.split("-")[1]
         const user = users.filter(employee => {
-          return employee.name.last == firstWord
+          return employee.lastName == firstWord
         })
         return user
       }
@@ -54,7 +54,13 @@ return result;
       
       };
 
+      function calculateAge(birthDate) {
+        const now = new Date();
+        const diffInMs = now.getTime() - birthDate.getTime();
+        const ageDate = new Date(diffInMs);
+        return Math.abs(ageDate.getUTCFullYear() - 1970); 
+      }
    
 
-    export {assignTasks, getSessionStorageData, findEmployee, handleUpdateTask}
+    export {assignTasks, getSessionStorageData, findEmployee, handleUpdateTask, calculateAge}
 

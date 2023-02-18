@@ -39,17 +39,17 @@ useEffect(() => {
     <div className='container'>
       <header className='profile__banner'>
       <div className='profile__banner-background bg-pan-left'>
-        {employee && <img className="employee__img" src={employee.picture.large} alt="Employee" width="100px" height="100px"/>}
+        {employee && <img className="employee__img" src={employee.imgUrl} alt="Employee" width="100px" height="100px"/>}
         <div className='profile__banner__info'>
-        {employee && <h1>{employee.name.first} {employee.name.last}, {employee.dob.age}</h1>}
-        {employee && <Link to={`/user/${employee.name.first}-${employee.name.last}/edit`}><button className='allpurpose__btn allpurpose__btn--editProfile'>Edit Profile</button></Link>}
+        {employee && <h1>{employee.firstName} {employee.lastName}, {employee.age}</h1>}
+        {employee && <Link to={`/user/${employee.firstName}-${employee.lastName}/edit`}><button className='allpurpose__btn allpurpose__btn--editProfile'>Edit Profile</button></Link>}
         </div>
       </div>
       <div className='profile__banner__secondaryInfo'>
         <FontAwesomeIcon icon={faPhoneSquare}  style={{color: '#5c618d'}}/>
         {employee && <p> {employee.cell}</p>}
         <FontAwesomeIcon icon={faMapLocationDot} style={{color: '#5c618d'}}/>
-        {employee && <p>{employee.location.country}</p>}
+        {employee && <p>{employee.country}</p>}
         <FontAwesomeIcon icon={faEnvelope} style={{color: '#5c618d'}}/>
        {employee && <p> {employee.email}</p>}
       </div>
@@ -68,15 +68,15 @@ useEffect(() => {
             </div>
             <div className='profile__info__container'>
             <h2>Birthday:</h2>
-            {employee && <p>{new Date(employee?.dob.date).toLocaleDateString('en-US')}</p>}
+            {employee && <p>{new Date(employee?.dob).toLocaleDateString('en-US')}</p>}
             </div>
             <div className='profile__info__container'>
             <h2>Born in:</h2>
-            {employee && <p> {employee.location.city}, {employee.location.country}</p>}
+            {employee && <p> {employee.city}, {employee.country}</p>}
             </div>
             <div className='profile__info__container'>
             <h2>Address:</h2>
-            {employee && <p>{employee.location.street.number} - {employee.location.street.name}</p>}
+            {employee && <p>{employee.streetNumber} - {employee.streetName}</p>}
             </div>
           </div>
         </div>

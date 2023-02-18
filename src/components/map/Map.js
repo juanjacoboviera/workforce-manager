@@ -3,7 +3,7 @@ import GoogleMaps from 'simple-react-google-maps'
 import config from "../../config";
 
 const Map = ({employee}) => {
-    const {location: {coordinates: {latitude, longitude}}} = employee
+    const {latitude, longitude} = employee
   return (
     <div className="">
         <GoogleMaps
