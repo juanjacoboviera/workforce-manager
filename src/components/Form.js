@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Form = ({formData, handleFormChange}) => {
-console.log(formData.latitude)
   return (
     <form id='editProfile' className='editPage__content' action="submit">
     <div className="left__container">
@@ -23,7 +22,7 @@ console.log(formData.latitude)
             <h2 className='form__tittle'>Contact</h2>
         </div>
         <div className='inputsX2__container'>
-               {formData &&  <input id='phoneNumber' type="text" placeholder='Cell number' value={formData.cell} onChange={(e)=> handleFormChange(e)} />}
+               {formData &&  <input id='cell' type="text" placeholder='Cell number' value={formData.cell} onChange={(e)=> handleFormChange(e)} />}
                 <input id='email' type="text" placeholder='E-mail' value={formData.email} onChange={(e)=> handleFormChange(e)} />
             </div>
     </div>
@@ -66,9 +65,9 @@ console.log(formData.latitude)
         </div>
         <div className='gender__radios'>
             <label htmlFor="male">Male</label>
-                <input className='radio' id='male' type="radio" value='male' name='gender' checked={formData.gender === 'male'} onChange={(e)=> handleFormChange(e)}/>
+                <input className='radio' id='gender' type="radio" value='male' name='gender' checked={formData.gender === 'male'} onChange={(e)=> handleFormChange(e)}/>
             <label htmlFor="female">Female</label>
-                <input className='radio' id='female' type="radio" value='female' name='gender' checked={formData.gender === 'female'} onChange={(e)=> handleFormChange(e)} />
+                <input className='radio' id='gender' type="radio" value='female' name='gender' checked={formData.gender === 'female'} onChange={(e)=> handleFormChange(e)} />
         </div>
     </div>
     </div>

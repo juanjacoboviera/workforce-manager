@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { useContext } from 'react';
 import { findEmployee, getSessionStorageData, calculateAge } from '../functions';
 import employeeContext from '../storage/EmployeeContext'
@@ -8,6 +8,7 @@ import { faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons"
 import Form from './Form';
 
 const ProfileEditPage = () => {
+  const navigate = useNavigate();
     const context = useContext(employeeContext);
     const {employeeList, setEmployeeList} = context.value
     const {profileId} = useParams();
@@ -39,7 +40,7 @@ useEffect(()=>{
         firstName: employee[0].firstName,
         lastName:  employee[0].lastName,
         dob: new Date(employee[0].dob),
-        age: calculateAge(new Date(employee[0].dob.date)),
+        age: calculateAge(new Date(employee[0].dob)),
         cell: employee[0].cell,
         email: employee[0].email,
         imgUrl: employee[0].imgUrl,
@@ -62,27 +63,42 @@ const updateEmployeeData = (array, match, formData) =>{
       return employee
     }
     return{
+      firstName: formData.firstName,
+      lastName: formData.lastName,
+      dob: formData.dob,
+      age: calculateAge(new Date(formData.dob)),
       cell: formData.cell,
-      dob: {date: formData.dob, age: formData.age},
-      location: {}
+      email: formData.email,
+      imgUrl: formData.imgUrl,
+      country: formData.country,
+      city: formData.city,
+      streetNumber: formData.streetNumber,
+      streetName: formData.streetName,
+      latitude:formData.latitude,
+      longitude:formData.longitude,
+      gender: formData.gender,
+      tasks: [...employee.tasks]
+      
     }
 
   })
+  setEmployeeList(newListOfEmployees)
+  sessionStorage.setItem("employeesList", JSON.stringify(newListOfEmployees));
+  navigate(`/user/${formData.firstName}-${formData.lastName}/`)
 }
 
-const saveChanges = () =>{
-
-}
 
 function handleFormChange(evt) {
     const value = evt.target.value;
+   
+
     setFormData({
       ...formData,
       [evt.target.id]: value
     });
   }
 
-console.log(formData)
+console.log(employeeList)
 
   return (
     <div className='editPage__container'>
@@ -93,7 +109,10 @@ console.log(formData)
             <h2>Profile Information</h2>
             </div>
             <div className="btn__container">
-                <button className='allpurpose__btn allpurpose__btn--editProfile' form='editProfile' type='submit'>Save changes</button>
+                <button onClick={(e) => {
+                  e.preventDefault()
+                  updateEmployeeData(employeeList, employee, formData)
+                }} className='allpurpose__btn allpurpose__btn--editProfile' form='editProfile' type='submit'>Save changes</button>
             </div>
             </div>
                <Form formData={formData} handleFormChange={handleFormChange}/>

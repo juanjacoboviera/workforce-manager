@@ -30,10 +30,8 @@ useEffect(()=>{
     fetch(workForceUrl)
     .then(response => response.json())
     .then(data => {
-      // const employeesList = data.results;
       const rawEmployeesList = data.results;
       const employeesList = rawEmployeesList.map(employee =>{
-        const employeesArray = []
         const newEmployee =  {
           firstName: employee.name.first,
           lastName:  employee.name.last,
@@ -51,10 +49,9 @@ useEffect(()=>{
           longitude: employee.location.coordinates.longitude,
 
         }
-        employeesArray.push(newEmployee)
-        return employeesArray
+        return {...newEmployee}
       })
-      console.log(employeesList)
+    
       fetch('./data.json')
       .then(response => response.json())
       .then(data => {
