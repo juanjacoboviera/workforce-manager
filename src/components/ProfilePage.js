@@ -19,6 +19,8 @@ const ProfilePage = () => {
       const [clicked, setClicked] = useState(false)
       const context = useContext(employeeContext);
       const {employeeList, setEmployeeList} = context.value
+      // const dob = employee.dob && new Date(employee.dob);
+      // const formattedDob =  dob.getUTCDate().toString().padStart(2, '0') + '-' + (dob.getUTCMonth() + 1).toString().padStart(2, '0') + '-' + dob.getUTCFullYear();
 
 useEffect(() => {
   const newEmployeeList = getSessionStorageData()
@@ -68,7 +70,7 @@ useEffect(() => {
             </div>
             <div className='profile__info__container'>
             <h2>Birthday:</h2>
-            {employee && <p>{new Date(employee?.dob).toLocaleDateString('en-US')}</p>}
+            {employee && <p>{new Date(employee.dob).toLocaleDateString('en-US', {timeZone: 'UTC'})}</p>}
             </div>
             <div className='profile__info__container'>
             <h2>Born in:</h2>
