@@ -1,25 +1,34 @@
-import React from "react";
-import GoogleMaps from 'simple-react-google-maps'
+import React from 'react'
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import config from "../../config";
 
-const Map = ({employee}) => {
-    const {latitude, longitude} = employee
-    console.log(parseFloat(latitude), parseFloat(longitude))
+
+function Map({employee}) {
+  const {latitude, longitude} = employee;
+
+  const containerStyle = {
+    width: '120px',
+    height: '120px'
+  };
+  
+  const center = {
+    lat: latitude,
+    lng: longitude
+  };
+
   return (
-    <div className="">
-        <GoogleMaps
-        apiKey={config.apiKey}
-        style={{height: '120px', width: "100%"}}
+    <LoadScript
+      googleMapsApiKey={config.apiKey}
+    >
+      <GoogleMap
+        mapContainerStyle={containerStyle}
+        center={center}
         zoom={3}
-        center={{
-            lat: parseFloat(latitude) ,
-            lng: parseFloat(longitude),
-        }}
-        markers={{lat: parseFloat(latitude),lng: parseFloat(longitude),}}
-        options={{
-        }}
-        />
-    </div>
+      >
+        { /* Child components, such as markers, info windows, etc. */ }
+        <></>
+      </GoogleMap>
+    </LoadScript>
   )
 }
 
