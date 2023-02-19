@@ -4,6 +4,7 @@ import config from "../../config";
 
 const Map = ({employee}) => {
     const {latitude, longitude} = employee
+    console.log(parseFloat(latitude), parseFloat(longitude))
   return (
     <div className="">
         <GoogleMaps
@@ -11,10 +12,10 @@ const Map = ({employee}) => {
         style={{height: '120px', width: "100%"}}
         zoom={3}
         center={{
-            lat: parseInt(latitude) ,
-            lng: parseInt(longitude),
+            lat: parseFloat(latitude) ,
+            lng: parseFloat(longitude),
         }}
-        markers={{lat: parseInt(latitude),lng: parseInt(longitude),}}
+        markers={{lat: parseFloat(latitude),lng: parseFloat(longitude),}}
         options={{
         }}
         />
