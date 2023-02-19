@@ -14,7 +14,8 @@ const Form = ({formData, handleFormChange}) => {
         <div className='inputsX3__container'>
            {formData &&  <input id='firstName' type="text" placeholder='First name' value={formData.firstName} onChange={(e)=> handleFormChange(e)} />}
                {formData &&  <input id='lastName' type="text" placeholder='Last name' value={formData.lastName} onChange={(e)=> handleFormChange(e)} />}
-               <input id='dob' type="date" placeholder='DOB'  value={formData.dob?.toISOString().substr(0, 10)} onChange={(e)=> handleFormChange(e)} />
+               <input id='dob' type="date" placeholder='DOB'  value={typeof formData.dob === 'object' && formData.dob instanceof Date ? formData.dob.toISOString().substr(0, 10) : formData.dob}
+ onChange={(e)=> handleFormChange(e)} />
             </div>
     </div>
     <div className="names__container block__container">

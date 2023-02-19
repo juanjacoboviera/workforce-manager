@@ -90,7 +90,8 @@ const updateEmployeeData = (array, match, formData) =>{
 
 function handleFormChange(evt) {
     const value = evt.target.value;
-   
+    console.log(value)
+    console.log(value)
 
     setFormData({
       ...formData,
