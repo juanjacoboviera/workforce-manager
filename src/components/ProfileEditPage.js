@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate, Link } from 'react-router-dom'
 import { useContext } from 'react';
 import { findEmployee, getSessionStorageData, calculateAge } from '../functions';
 import employeeContext from '../storage/EmployeeContext'
@@ -106,7 +106,7 @@ console.log(employeeList)
         <div className='editPage__box'>
             <div className="editPage__header">
             <div className="navigate__container">
-            <FontAwesomeIcon icon={faArrowAltCircleLeft}  style={{color: 'white', fontSize: '1.5rem'}}/>
+            <Link to={`/user/${formData.firstName}-${formData.lastName}/`}><button className='navigate__btn'><FontAwesomeIcon icon={faArrowAltCircleLeft}  style={{color: 'white', fontSize: '1.5rem'}}/></button></Link>
             <h2>Profile Information</h2>
             </div>
             <div className="btn__container">

@@ -23,7 +23,6 @@ function Map({employee}) {
         center={center}
         zoom={4}
       >
-        { /* Child components, such as markers, info windows, etc. */ }
         <Marker position={center} />
         <></>
       </GoogleMap>

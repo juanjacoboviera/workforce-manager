@@ -593,6 +593,11 @@ input[type=checkbox].toggle-switch:checked::after {
   align-items: center;
 }
 
+.navigate__btn{
+  margin-top: 0;
+  width: 20px;
+}
+
 .navigate__container h2 {
   color: white;
   margin: 0 0 0 20px;
