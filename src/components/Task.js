@@ -5,9 +5,10 @@ import { faEdit } from "@fortawesome/free-solid-svg-icons"
 import { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
+import {Link} from 'react-router-dom'
 
 
-const Task = ({task, setUpdateTask, setClicked}) => {
+const Task = ({task, setUpdateTask, setClicked, employee}) => {
   const [isChecked, setIsChecked] = useState(task.completed);
   
 
@@ -45,7 +46,7 @@ const Task = ({task, setUpdateTask, setClicked}) => {
         </div> : null }
         </div>
         <Tippy  content="Edit Task">
-        <button className='allpurpose__btn'> <FontAwesomeIcon icon={faEdit} style={{color: '#c3bef0'}}/></button>
+      <Link to={`/user/${employee.firstName}-${employee.lastName}/task/${task.id}/edit`}><button className='allpurpose__btn'> <FontAwesomeIcon icon={faEdit} style={{color: '#c3bef0'}}/></button></Link>
         </Tippy>
         </div>
     </div>

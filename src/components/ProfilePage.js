@@ -88,7 +88,7 @@ useEffect(() => {
           <h2>Employee Tasks</h2>
           </div>
           <div className='task__cardContainer'>
-          {employee && employee.tasks.map(task => <Task  key={task.id} task={task} setUpdateTask={setUpdateTask} setClicked={setClicked}/>)}
+          {employee && employee.tasks.map(task => <Task  key={task.id} task={task} setUpdateTask={setUpdateTask} setClicked={setClicked} employee={employee}/>)}
           </div>
         </div>
       </main>
