@@ -35,7 +35,7 @@ useEffect(() => {
     sessionStorage.setItem("employeesList", JSON.stringify(newEmployeeList));
 
   }
-}, [updateTask, clicked]);
+}, [updateTask]);
 
 
 

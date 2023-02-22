@@ -23,12 +23,12 @@ const Task = ({task, setUpdateTask, setClicked, employee}) => {
     <div className='task__card'>
         <div className='task__primaryInfo'>
             <div className='task__title'>
-         <FontAwesomeIcon icon={faCheckCircle} style={{ color: task.completed === '1' ? 'rgb(51, 255, 173)' : 'rgb(188, 188, 188)' }}/>
+         <FontAwesomeIcon icon={faCheckCircle} style={{ color: task.completed ? 'rgb(51, 255, 173)' : 'rgb(188, 188, 188)' }}/>
         <h2>{task.title}</h2> 
             </div>
         <Tippy  content={task.completed == 1 ? 'Mark as incomplete' : 'Mark as complete'}>
-          <input type="checkbox"  className="toggle-switch" checked={task.completed == 1} onChange={handleChange}></input>
-          {/* le puse defaultChecked en vea de checked y funciona.*/}
+          <input type="checkbox"  className="toggle-switch" defaultChecked={task.completed == 1} onChange={handleChange}></input>
+          {/* le puse defaultChecked en vea de checked y funciona.  */}
           </Tippy>
         </div>
         <div className='task__secondaryInfo'>
