@@ -15,28 +15,30 @@ import { Link } from 'react-router-dom'
 const ProfilePage = () => {
       const [employee, setEmployee] = useState(undefined);
       const {profileId} = useParams();
-      const [updateTask, setUpdateTask] = useState({})
+      const [updateTask, setUpdateTask] = useState(null)
       const [clicked, setClicked] = useState(false)
       const context = useContext(employeeContext);
       const {employeeList, setEmployeeList} = context.value
-      // const dob = employee.dob && new Date(employee.dob);
-      // const formattedDob =  dob.getUTCDate().toString().padStart(2, '0') + '-' + (dob.getUTCMonth() + 1).toString().padStart(2, '0') + '-' + dob.getUTCFullYear();
+
 
 useEffect(() => {
   const newEmployeeList = getSessionStorageData()
   const employee = findEmployee(newEmployeeList, profileId);
   setEmployee(employee[0]);
+      
 
-  if (clicked) {
+  if (updateTask) {
+    // console.log('otro string', updateTask)
     const employeesSessionStorageList = getSessionStorageData()
     const newEmployeeList = handleUpdateTask(updateTask, employee, employeesSessionStorageList)
     setEmployeeList(newEmployeeList)
     sessionStorage.setItem("employeesList", JSON.stringify(newEmployeeList));
 
   }
-}, [clicked, updateTask]);
+}, [updateTask, clicked]);
 
-      
+
+
   return (
     <div className='container'>
       <header className='profile__banner'>

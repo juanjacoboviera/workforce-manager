@@ -9,39 +9,32 @@ import {Link} from 'react-router-dom'
 
 
 const Task = ({task, setUpdateTask, setClicked, employee}) => {
-  const [isChecked, setIsChecked] = useState(task.completed);
-  
-
-  useEffect(()=>{
-  
-  }, [isChecked])
-  
+ 
   const handleChange = () => {
-    setClicked(true)
-    setIsChecked(!isChecked);
-    const taskUpdate = {...task}
+    console.log(task.completed, "second string")
     setUpdateTask({
-      ...taskUpdate,
-      completed: !isChecked
+      ...task,
+      completed: task.completed == "1" ? "0" : "1"
     })
   };
-    
-  
+  console.log('hello' ,task.completed)
+
   return (
     <div className='task__card'>
         <div className='task__primaryInfo'>
             <div className='task__title'>
-         <FontAwesomeIcon icon={faCheckCircle} style={{ color: isChecked ? 'rgb(51, 255, 173)' : 'rgb(188, 188, 188)' }}/>
+         <FontAwesomeIcon icon={faCheckCircle} style={{ color: task.completed === '1' ? 'rgb(51, 255, 173)' : 'rgb(188, 188, 188)' }}/>
         <h2>{task.title}</h2> 
             </div>
-        <Tippy  content={isChecked ? 'Mark as incomplete' : 'Mark as complete'}>
-          <input type="checkbox" className="toggle-switch" checked={isChecked} onChange={handleChange}></input>
+        <Tippy  content={task.completed == 1 ? 'Mark as incomplete' : 'Mark as complete'}>
+          <input type="checkbox"  className="toggle-switch" checked={task.completed == 1} onChange={handleChange}></input>
+          {/* le puse defaultChecked en vea de checked y funciona.*/}
           </Tippy>
         </div>
         <div className='task__secondaryInfo'>
         <div className='task__dueDate'>
         <p><span className='task__span'>Due:</span> {task.endDate ?  task.endDate : 'date has not been assigned'}</p>
-        {task.urgent ?  <div className='task__urgent'>
+        {task.urgent == 1 ?  <div className='task__urgent'>
        <small>Urgent</small>
         </div> : null }
         </div>

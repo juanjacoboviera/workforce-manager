@@ -1,27 +1,30 @@
 import React, {useContext, useState, useEffect} from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import employeeContext from '../storage/EmployeeContext'
 import { findEmployee, getSessionStorageData } from '../functions';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons"
 
 const TaskEditPage = () => {
+    const navigate = useNavigate();
     const context = useContext(employeeContext);
     const {employeeList, setEmployeeList} = context.value
     const [employee, setEmployee] = useState({})
     const {taskId, profileId} = useParams();
     const [formData, setFormData] = useState({
-        id: undefined,
-        personId: undefined,
-        tittle: '',
-        startDate: "",
-        endDate: undefined,
-        description: '',
-        urgent: '',
-        completed: ''
+        // id: undefined,
+        // personId: undefined,
+        // tittle: '',
+        // startDate: "",
+        // endDate: undefined,
+        // description: '',
+        // urgent: '',
+        // completed: ''
     })
-    const [complete, setComplete] = useState(formData.completed)
-    const [priority, setpriority] = useState(formData.urgent)
+    const [complete, setComplete] = useState(formData.completed);
+    const [priority, setpriority] = useState(formData.urgent);
+    const [dataRefresh, setDataRefresh] = useState(false);
+
 
     const getTask = (employee, taskId) =>{
         const task = employee.tasks.find(task => {
@@ -30,23 +33,56 @@ const TaskEditPage = () => {
         return task
     }
 
+    const handleUpdateTask = (updateTask, match, array) => {
+        const newEmployeesList = array.map((employee) => {
+          if (employee.email !== match.email) {
+            return employee;
+          }
+          const newTasks = employee.tasks.map((task) => {
+            if (task.id !== updateTask.id) {
+              return task;
+            }
+      
+            return {
+                id: formData.id,
+                personId: formData.personId,
+                title: formData.tittle,
+                startDate: formData.startDate,
+                endDate: formData.endDate,
+                description: formData.description,
+                urgent: formData.urgent,
+                completed: formData.completed
+            };
+          });
+      
+          return {
+            ...employee,
+            tasks: newTasks,
+          };
+        });
+         return newEmployeesList;
+      
+      };
+
     function handleFormChange(evt) {
         const value = evt.target.value;
-      console.log('hey')
         setFormData({
         ...formData,
         [evt.target.id]: value
         });
        
-        // if(evt.target.id == 'completed'){
-        //     setComplete(evt.target.value)
-        // }
-        // if(evt.target.id == 'urgent' ){
-        //     setpriority(evt.target.value)
-        // }
     }
 
-    useEffect(()=>{
+    const saveUpdatedTask = () =>{
+        const newEmployeeList = getSessionStorageData()
+        console.log(formData)
+        const updatedListofEmployees = handleUpdateTask(formData, employee, newEmployeeList)
+        setEmployeeList(updatedListofEmployees)
+        sessionStorage.setItem("employeesList", JSON.stringify(updatedListofEmployees));
+        navigate(`/user/${employee.firstName}-${employee.lastName}/`)
+    }
+
+    useEffect(()=>{  
         const newEmployeeList = getSessionStorageData()
         const employee = findEmployee(newEmployeeList, profileId);
         setEmployee(employee[0])
@@ -61,15 +97,11 @@ const TaskEditPage = () => {
             urgent: task.urgent,
             completed: task.completed
         })
-       console.log('re render')
         
-    },[])
+
+        
+    },[employeeList])
     
-
-
-
-
-  
   return (
     <div className='editPage__container editPage__container--task'>
         <div className="editPage__box editPage__box--task">
@@ -81,6 +113,7 @@ const TaskEditPage = () => {
             <div className="btn__container">
                 <button onClick={(e) => {
                   e.preventDefault()
+                  saveUpdatedTask(e)
                 }} className='allpurpose__btn allpurpose__btn--editProfile' form='editTask' type='submit'>Save changes</button>
             </div>
           </div>
@@ -118,20 +151,20 @@ const TaskEditPage = () => {
                 </div>
                 <div className="edit-task__dates-container  edit-task__input-container--status">
                     <div className='edit-task__input-container'>
-                        <label htmlFor="priority">Priority</label>
+                        <label htmlFor="priority">Priority {formData.urgent}</label>
                         <select className='edit-task__select' name="priority" id="urgent"  onChange={(e)=> handleFormChange(e)} value={formData.urgent}>
-                            <option value={true}>High</option>
-                            <option value={false}>Low</option>
+                            <option value="1" >High</option>
+                            <option value="0">Low</option>
                         </select>
-                        <span id='circlePriority' style={{ backgroundColor: priority ? 'rgb(255, 157, 0)' : 'rgb(51, 255, 173)' }}></span>
+                        <span id='circlePriority' style={{ backgroundColor: formData.urgent == 1 ? 'rgb(255, 157, 0)' : 'rgb(51, 255, 173)' }}></span>
                     </div>
                     <div className='edit-task__input-container edit-task__input-container--status'>
                         <label htmlFor="status">Status</label>
                         <select className='edit-task__select' name="status" id="completed"  onChange={(e)=> {handleFormChange(e)}} value={formData.completed}>
-                            <option value={false}>Pending</option>
-                            <option value={true}>Complete</option>
+                            <option value='0'>Pending</option>
+                            <option value='1'>Complete</option>
                         </select>
-                        <span id='circleStatus' style={{ backgroundColor: complete ? 'rgb(51, 255, 173)' : 'rgb(255, 157, 0)' }}></span>
+                        <span id='circleStatus' style={{ backgroundColor: formData.completed == 1 ? 'rgb(51, 255, 173)' : 'rgb(255, 157, 0)' }}></span>
                 </div>
                 </div>
                 </form>
