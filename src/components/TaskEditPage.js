@@ -27,7 +27,7 @@ const TaskEditPage = () => {
             <div className="btn__container">
                 <button onClick={(e) => {
                   e.preventDefault()
-                }} className='allpurpose__btn allpurpose__btn--editProfile' form='editProfile' type='submit'>Save changes</button>
+                }} className='allpurpose__btn allpurpose__btn--editProfile' form='editTask' type='submit'>Save changes</button>
             </div>
           </div>
           <div className='edit-task__container'>
@@ -41,6 +41,7 @@ const TaskEditPage = () => {
                         </div>
                     </div>
                 </div>
+                <form id='editTask' action="submit">
                 <div className='edit-task__input-container'>
                     <label htmlFor="taskTittle">Task Title</label>
                     <input className='edit-task__short-input' id='taskTittle' type="text" placeholder='Redact creative brief' />
@@ -76,6 +77,7 @@ const TaskEditPage = () => {
                         <span className='circleStatus'></span>
                 </div>
                 </div>
+                </form>
             </div>
         </div>
     </div>
