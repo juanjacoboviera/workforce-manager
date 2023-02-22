@@ -10,11 +10,12 @@ import {Link} from 'react-router-dom'
 
 const Task = ({task, setUpdateTask, setClicked, employee}) => {
  
+
   const handleChange = () => {
-    console.log(task.completed, "second string")
+    console.log(task.completed)
     setUpdateTask({
       ...task,
-      completed: task.completed == "1" ? "0" : "1"
+      completed: task.completed == 1 ? 0 : 1
     })
   };
   console.log('hello' ,task.completed)
@@ -27,8 +28,7 @@ const Task = ({task, setUpdateTask, setClicked, employee}) => {
         <h2>{task.title}</h2> 
             </div>
         <Tippy  content={task.completed == 1 ? 'Mark as incomplete' : 'Mark as complete'}>
-          <input type="checkbox"  className="toggle-switch" defaultChecked={task.completed == 1} onChange={handleChange}></input>
-          {/* le puse defaultChecked en vea de checked y funciona.  */}
+          <input type="checkbox" className="toggle-switch" checked={task.completed == 1} onChange={handleChange}></input>
           </Tippy>
         </div>
         <div className='task__secondaryInfo'>
