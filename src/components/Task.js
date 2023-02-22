@@ -46,7 +46,7 @@ const Task = ({task, setUpdateTask, setClicked, employee}) => {
         </div> : null }
         </div>
         <Tippy  content="Edit Task">
-      <Link to={`/user/${employee.firstName}-${employee.lastName}/task/${task.id}/edit`}><button className='allpurpose__btn'> <FontAwesomeIcon icon={faEdit} style={{color: '#c3bef0'}}/></button></Link>
+        <Link to={`/user/${employee.firstName}-${employee.lastName}/task/${task.id}/edit`}><button className='allpurpose__btn'> <FontAwesomeIcon icon={faEdit} style={{color: '#c3bef0'}}/></button></Link>
         </Tippy>
         </div>
     </div>
