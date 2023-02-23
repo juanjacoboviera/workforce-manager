@@ -17,26 +17,30 @@ const ProfilePage = () => {
       const {profileId} = useParams();
       const [updateTask, setUpdateTask] = useState(null)
       const [clicked, setClicked] = useState(false)
-      const context = useContext(employeeContext);
-      const {employeeList, setEmployeeList} = context.value
 
 
 useEffect(() => {
   const newEmployeeList = getSessionStorageData()
-  const employee = findEmployee(newEmployeeList, profileId);
+  let employee = findEmployee(newEmployeeList, profileId);
   setEmployee(employee[0]);
       
 
   if (updateTask) {
-    // console.log('otro string', updateTask)
+    console.log('inside', updateTask)
     const employeesSessionStorageList = getSessionStorageData()
     const newEmployeeList = handleUpdateTask(updateTask, employee, employeesSessionStorageList)
-    setEmployeeList(newEmployeeList)
     sessionStorage.setItem("employeesList", JSON.stringify(newEmployeeList));
+    
+    
+    employee = findEmployee(newEmployeeList, profileId);
+    setEmployee(employee[0]);
 
   }
 }, [updateTask]);
 
+const handleUpdate = (task) => {
+  setUpdateTask(task);
+};
 
 
   return (
@@ -90,7 +94,7 @@ useEffect(() => {
           <h2>Employee Tasks</h2>
           </div>
           <div className='task__cardContainer'>
-          {employee && employee.tasks.map(task => <Task  key={task.id} task={task} setUpdateTask={setUpdateTask} setClicked={setClicked} employee={employee}/>)}
+          {employee && employee.tasks.map(task => <Task  key={task.id} task={task} setUpdateTask={setUpdateTask} setClicked={setClicked} employee={employee} handleUpdate={handleUpdate} updateTask={updateTask}/>)}
           </div>
         </div>
       </main>

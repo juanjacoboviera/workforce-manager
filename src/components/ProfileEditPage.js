@@ -99,7 +99,6 @@ function handleFormChange(evt) {
     });
   }
 
-console.log(employeeList)
 
   return (
     <div className='editPage__container'>

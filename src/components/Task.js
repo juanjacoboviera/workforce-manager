@@ -2,24 +2,20 @@ import React from 'react'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons"
 import { faEdit } from "@fortawesome/free-solid-svg-icons"
-import { useState, useEffect } from 'react';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 import {Link} from 'react-router-dom'
 
 
-const Task = ({task, setUpdateTask, setClicked, employee}) => {
- 
+const Task = ({task, setUpdateTask, employee}) => {
 
   const handleChange = () => {
-    console.log(task.completed)
     setUpdateTask({
       ...task,
       completed: task.completed == 1 ? 0 : 1
     })
   };
-  console.log('hello' ,task.completed)
-
+console.log(task.completed, 'outside')
   return (
     <div className='task__card'>
         <div className='task__primaryInfo'>
@@ -33,7 +29,7 @@ const Task = ({task, setUpdateTask, setClicked, employee}) => {
         </div>
         <div className='task__secondaryInfo'>
         <div className='task__dueDate'>
-        <p><span className='task__span'>Due:</span> {task.endDate ?  task.endDate : 'date has not been assigned'}</p>
+        <p><span className='task__span'>{task.completed ? 'Completed on:' : 'Due:'}</span> {task.endDate ?  task.endDate : 'date has not been assigned'}</p>
         {task.urgent == 1 ?  <div className='task__urgent'>
        <small>Urgent</small>
         </div> : null }
