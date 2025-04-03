@@ -71,10 +71,13 @@ useEffect(()=>{
 
   return (
     <main className='container'>
-    <Select setSortByAge={setSortByAge} sortByAge={sortByAge}/>
-    <div className="card__grid">
-    {employeeList.map((sortByDOB(employeeList), employee => <EmployeeCard key={employee.dob} employee={employee} handleReset={handleReset}/>))}
-    </div>
+      <div className='select__container'>
+        <h2>Filter employees by:</h2>
+        <Select setSortByAge={setSortByAge} sortByAge={sortByAge}/>
+        <div className="card__grid">
+        {employeeList.map((sortByDOB(employeeList), employee => <EmployeeCard key={employee.dob} employee={employee} handleReset={handleReset}/>))}
+        </div>
+      </div>
     </main>
   )
 }

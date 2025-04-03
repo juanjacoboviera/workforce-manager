@@ -10,6 +10,7 @@ import Map from './map/Map'
 import Task from './Task'
 import { getSessionStorageData, findEmployee, handleUpdateTask } from '../functions'
 import employeeContext from '../storage/EmployeeContext'
+import { faArrowAltCircleLeft} from "@fortawesome/free-solid-svg-icons"
 import { Link } from 'react-router-dom'
 
 const ProfilePage = () => {
@@ -45,8 +46,13 @@ const handleUpdate = (task) => {
 
   return (
     <div className='container'>
+      <div className='profile__layout'>
       <header className='profile__banner'>
       <div className='profile__banner-background bg-pan-left'>
+        <div className='navigate__container'>
+        <Link to={`/`}><button className='navigate__btn margin__left'><FontAwesomeIcon icon={faArrowAltCircleLeft}  style={{color: 'white', fontSize: '1.5rem'}}/></button></Link>
+        <h2>Back to profiles</h2>
+        </div>
         {employee && <img className="employee__img" src={employee.imgUrl} alt="Employee" width="100px" height="100px"/>}
         <div className='profile__banner__info'>
         {employee && <h1>{employee.firstName} {employee.lastName}, {employee.age}</h1>}
@@ -98,6 +104,7 @@ const handleUpdate = (task) => {
           </div>
         </div>
       </main>
+      </div>
     </div>
   )
 }

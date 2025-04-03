@@ -101,22 +101,24 @@ function handleFormChange(evt) {
 
 
   return (
-    <div className='editPage__container'>
-        <div className='editPage__box'>
-            <div className="editPage__header">
-            <div className="navigate__container">
-            <Link to={`/user/${formData.firstName}-${formData.lastName}/`}><button className='navigate__btn'><FontAwesomeIcon icon={faArrowAltCircleLeft}  style={{color: 'white', fontSize: '1.5rem'}}/></button></Link>
-            <h2>Profile Information</h2>
-            </div>
-            <div className="btn__container">
-                <button onClick={(e) => {
-                  e.preventDefault()
-                  updateEmployeeData(employeeList, employee, formData)
-                }} className='allpurpose__btn allpurpose__btn--editProfile' form='editProfile' type='submit'>Save changes</button>
-            </div>
-            </div>
-               <Form formData={formData} handleFormChange={handleFormChange}/>
-        </div>
+    <div className='container'>
+      <div className='editPage__container'>
+          <div className='editPage__box'>
+              <div className="editPage__header">
+              <div className="navigate__container">
+              <Link to={`/user/${formData.firstName}-${formData.lastName}/`}><button className='navigate__btn'><FontAwesomeIcon icon={faArrowAltCircleLeft}  style={{color: 'white', fontSize: '1.5rem'}}/></button></Link>
+              <h2>Profile Information</h2>
+              </div>
+              <div className="btn__container">
+                  <button onClick={(e) => {
+                    e.preventDefault()
+                    updateEmployeeData(employeeList, employee, formData)
+                  }} className='allpurpose__btn allpurpose__btn--editProfile' form='editProfile' type='submit'>Save changes</button>
+              </div>
+              </div>
+                <Form formData={formData} handleFormChange={handleFormChange}/>
+          </div>
+      </div>
     </div>
   )
 }

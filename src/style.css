@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.margin__left{
+  margin-left: 10px;
+}
+
 body{
   font-family: "Montserrat", sans-serif;
   background-color: #f1f3fa;
@@ -12,11 +16,10 @@ body{
 .container{
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
-  height: auto;
-  width: 100vw;
- 
+  height: 100vh;
+  width: 100vw; 
 }
 
 input{
@@ -117,6 +120,7 @@ input{
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-auto-rows: auto;
+  gap: 1rem;
 }
 
 .create__employee{
@@ -232,6 +236,7 @@ h2{
 }
 
 #employee__roll{
+  margin-top: 5px;
   text-transform: capitalize;
   font-size: 0.8rem;
 }
@@ -257,12 +262,21 @@ h2{
 
 /* ProfilePage Component Styles */
 
+.profile__layout{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+  height: 90%;
+}
+
 .profile__banner{
   display: flex;
   flex-direction: column;
   align-items: start;
   height: 200px;
-  width: 80%;
+  width: 90%;
   margin: 15px 5px;
   border-top-right-radius: 10px ;
   border-top-left-radius: 10px ;
@@ -342,8 +356,9 @@ h2{
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   justify-items: center;
-  width: 80%;
+  width: 90%;
   gap: 10px;
+  max-height: 90%;
 }
 
 .profile__main p{
@@ -354,7 +369,7 @@ h2{
   display: flex;
   flex-direction: column;
   /* justify-content: space-between; */
-  height: 330px;
+  max-height: 500px;
   width: 100%;
   background-color: white;
 
@@ -840,4 +855,60 @@ option{
   height: 10px;
   border-radius: 10px;
   background-color: rgb(255, 157, 0);
+}
+
+
+.select__container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+select {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  color: #333;
+  appearance: none; 
+  width: 200px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  margin-top: 5px;
+}
+
+select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+select::-ms-expand {
+  display: none; 
+}
+
+select::after {
+  content: '▼';
+  position: absolute;
+  right: 10px;
+  pointer-events: none;
+}
+
+
+select:hover {
+  border-color: #0056b3;
+}
+
+select option {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+select option:hover {
+  background-color: #f1f1f1;
 }
