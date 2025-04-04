@@ -45,7 +45,7 @@ const handleUpdate = (task) => {
 
 
   return (
-    <div className='container'>
+    <div className='container2'>
       <div className='profile__layout'>
       <header className='profile__banner'>
       <div className='profile__banner-background bg-pan-left'>
